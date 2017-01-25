@@ -26,6 +26,8 @@
  8.- Create all basig Home resource infrastructure and configure.
  9.- commit.
 10.- Create entry points to HomeResource and functions on HomeDAO
-
+11.- First healthcheck run, fixed come minor bugs.
+12.- commit
+13.- Create REST entries in HomeResource
 
 
