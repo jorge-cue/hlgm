@@ -8,6 +8,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
+ *
  * Created by horacio on 25/01/17.
  */
 @Entity
@@ -26,7 +27,7 @@ public class Home {
     @Length(max = 60)
     private String city;
     @NotNull
-    @Length(max = 3)
+    @Length(max = 5)
     private String state;
     @NotNull
     @Length(max = 5)
