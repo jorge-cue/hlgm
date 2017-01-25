@@ -9,6 +9,7 @@ import org.eclipse.jetty.http.HttpStatus;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriBuilder;
 import java.util.List;
@@ -18,6 +19,8 @@ import java.util.List;
  * Created by horacio on 25/01/17.
  */
 @Path("/api/home")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class HomeResource {
 
     private final HomeDAO homeDAO;
