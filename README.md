@@ -1,4 +1,4 @@
-# HomeLocationsOnGoogleMaps
+curl# HomeLocationsOnGoogleMaps
 
 How to start the HomeLocationsOnGoogleMaps application
 ---
