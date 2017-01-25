@@ -97,7 +97,7 @@ public class HomeResource {
         entity.setCity(home.getCity());
         entity.setState(home.getState());
         entity.setZipCode(home.getZipCode());
-        entity.setZipCode(home.getCountry());
+        entity.setCountry(home.getCountry());
         HomeEntity newHome = homeDAO.save(entity);
         return Response.created(UriBuilder.fromResource(HomeResource.class).build(newHome.getId())).status(HttpStatus.ACCEPTED_202).build();
     }
