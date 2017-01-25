@@ -1,8 +1,13 @@
 package mx.jhcue;
 
 import io.dropwizard.Application;
+import io.dropwizard.db.PooledDataSourceFactory;
+import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import mx.jhcue.core.Home;
+import mx.jhcue.db.HomeDAO;
+import mx.jhcue.resources.HomeResource;
 
 public class HomeLocationsOnGoogleMapsApplication extends Application<HomeLocationsOnGoogleMapsConfiguration> {
 
@@ -15,15 +20,24 @@ public class HomeLocationsOnGoogleMapsApplication extends Application<HomeLocati
         return "HomeLocationsOnGoogleMaps";
     }
 
+    private final HibernateBundle<HomeLocationsOnGoogleMapsConfiguration> hibernate = new HibernateBundle<HomeLocationsOnGoogleMapsConfiguration>(Home.class) {
+        @Override
+        public PooledDataSourceFactory getDataSourceFactory(HomeLocationsOnGoogleMapsConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
+
     @Override
     public void initialize(final Bootstrap<HomeLocationsOnGoogleMapsConfiguration> bootstrap) {
-        // TODO: application initialization
+        bootstrap.addBundle(hibernate);
     }
 
     @Override
     public void run(final HomeLocationsOnGoogleMapsConfiguration configuration,
                     final Environment environment) {
-        // TODO: implement application
-    }
 
+        final HomeDAO homeDAO = new HomeDAO(hibernate.getSessionFactory());
+
+        environment.jersey().register(new HomeResource(homeDAO));
+    }
 }
