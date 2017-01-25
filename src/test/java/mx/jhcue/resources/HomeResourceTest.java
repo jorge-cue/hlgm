@@ -1,7 +1,7 @@
 package mx.jhcue.resources;
 
 import io.dropwizard.testing.junit.ResourceTestRule;
-import mx.jhcue.core.Home;
+import mx.jhcue.core.HomeEntity;
 import mx.jhcue.db.HomeDAO;
 import org.junit.After;
 import org.junit.ClassRule;
@@ -31,7 +31,7 @@ public class HomeResourceTest {
     @Test
     public void getAHome() {
         // Prepare
-        Home expected = new Home();
+        HomeEntity expected = new HomeEntity();
         expected.setId(123L);
         expected.setStreetAddressLine1("123 Main St.");
         expected.setStreetAddressLine2("");
@@ -43,7 +43,7 @@ public class HomeResourceTest {
         when(homeDAO.findById(123L)).thenReturn(expected);
 
         // Exercise
-        Home actual = resources.client().target("/api/home/123").request().get(Home.class);
+        HomeEntity actual = resources.client().target("/api/home/123").request().get(HomeEntity.class);
 
         // Verify
         assertThat(actual).isEqualToComparingFieldByField(expected);
@@ -55,7 +55,7 @@ public class HomeResourceTest {
         when(homeDAO.findById(456L)).thenReturn(null);
 
         // Exercise
-        Home actual = resources.client().target("/api/home/456").request().get(Home.class);
+        HomeEntity actual = resources.client().target("/api/home/456").request().get(HomeEntity.class);
 
         // Verify
         assertThat(actual).isNull();

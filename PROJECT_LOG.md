@@ -23,6 +23,8 @@
           LC_CTYPE = 'C'
           CONNECTION LIMIT = -1;
 
+    CREATE
+
  8.- Create all basig Home resource infrastructure and configure.
  9.- commit.
 10.- Create entry points to HomeResource and functions on HomeDAO

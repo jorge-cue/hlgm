@@ -1,10 +1,12 @@
 package mx.jhcue.core;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -13,9 +15,11 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 @Table(name = "homes")
-public class Home {
+public class HomeEntity {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id", columnDefinition = "serial")
     private Long id;
     @NotNull
     @Length(max = 60)
@@ -35,8 +39,6 @@ public class Home {
     @NotNull
     @Length(max = 30)
     private String country;
-
-
 
     public Long getId() {
         return id;
@@ -92,5 +94,10 @@ public class Home {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
 }

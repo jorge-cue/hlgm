@@ -5,7 +5,7 @@ import io.dropwizard.testing.ResourceHelpers;
 import io.dropwizard.testing.junit.DropwizardAppRule;
 import mx.jhcue.HomeLocationsOnGoogleMapsApplication;
 import mx.jhcue.HomeLocationsOnGoogleMapsConfiguration;
-import mx.jhcue.core.Home;
+import mx.jhcue.core.HomeEntity;
 import org.eclipse.jetty.http.HttpStatus;
 import org.junit.ClassRule;
 import org.junit.Ignore;
@@ -26,34 +26,33 @@ import static org.junit.Assert.assertEquals;
 public class HomeResourceIntegrationTest {
 
 
-//    @ClassRule
-//    public static final DropwizardAppRule<HomeLocationsOnGoogleMapsConfiguration> RULE =
-//            new DropwizardAppRule<>(
-//                    HomeLocationsOnGoogleMapsApplication.class,
-    // TODO: fix next line, config-test.yml not found
-//                    ResourceHelpers.resourceFilePath("config-test.yml"));
+    @ClassRule
+    public static final DropwizardAppRule<HomeLocationsOnGoogleMapsConfiguration> RULE =
+            new DropwizardAppRule<>(
+                    HomeLocationsOnGoogleMapsApplication.class,
+                    ResourceHelpers.resourceFilePath("config-test.yml"));
 
     @Ignore
     @Test
     public void integrationTest() {
 
-//        Client client = new JerseyClientBuilder(RULE.getEnvironment()).build("test");
-//
-//        Home home = new Home();
-//        home.setStreetAddressLine1("Pedro Enriquez Urena 444");
-//        home.setStreetAddressLine1("Pabellon Burdeos 1 402");
-//        home.setState("CDMX");
-//        home.setCity("Ciudad de Mexico");
-//        home.setCountry("Mexico");
-//        home.setZipCode("04430");
-//
-//        Entity<Home> entity =  Entity.entity(home, MediaType.APPLICATION_JSON);
-//
-//        Response response = client.target(String.format("http://localhost:%d/api/home", RULE.getLocalPort()))
-//                .request(MediaType.APPLICATION_JSON)
-//                .post(entity);
-//
-//        assertThat(response)
-//                .hasFieldOrPropertyWithValue("status", HttpStatus.ACCEPTED_202);
+        Client client = new JerseyClientBuilder(RULE.getEnvironment()).build("test");
+
+        HomeEntity homeEntity = new HomeEntity();
+        homeEntity.setStreetAddressLine1("Pedro Enriquez Urena 444");
+        homeEntity.setStreetAddressLine1("Pabellon Burdeos 1 402");
+        homeEntity.setState("CDMX");
+        homeEntity.setCity("Ciudad de Mexico");
+        homeEntity.setCountry("Mexico");
+        homeEntity.setZipCode("04430");
+
+        Entity<HomeEntity> entity =  Entity.entity(homeEntity, MediaType.APPLICATION_JSON);
+
+        Response response = client.target(String.format("http://localhost:%d/api/homeEntity", RULE.getLocalPort()))
+                .request(MediaType.APPLICATION_JSON)
+                .post(entity);
+
+        assertThat(response)
+                .hasFieldOrPropertyWithValue("status", HttpStatus.ACCEPTED_202);
     }
 }

@@ -5,7 +5,7 @@ import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
-import mx.jhcue.core.Home;
+import mx.jhcue.core.HomeEntity;
 import mx.jhcue.db.HomeDAO;
 import mx.jhcue.resources.HomeResource;
 
@@ -20,7 +20,7 @@ public class HomeLocationsOnGoogleMapsApplication extends Application<HomeLocati
         return "HomeLocationsOnGoogleMaps";
     }
 
-    private final HibernateBundle<HomeLocationsOnGoogleMapsConfiguration> hibernate = new HibernateBundle<HomeLocationsOnGoogleMapsConfiguration>(Home.class) {
+    private final HibernateBundle<HomeLocationsOnGoogleMapsConfiguration> hibernate = new HibernateBundle<HomeLocationsOnGoogleMapsConfiguration>(HomeEntity.class) {
         @Override
         public PooledDataSourceFactory getDataSourceFactory(HomeLocationsOnGoogleMapsConfiguration configuration) {
             return configuration.getDataSourceFactory();
