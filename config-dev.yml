@@ -1,0 +1,14 @@
+logging:
+  level: INFO
+  loggers:
+    mx.jhcue: DEBUG
+
+database:
+  driverClass: org.postgresql.Driver
+  user: hlgm
+  password: P1xV4b3s+0
+  url: jdbc:postgresql://localhost:5432/hlgm
+  properties:
+    charSet: UTF-8
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+  maxWaitForConnection: 1s
