@@ -5,9 +5,9 @@ logging:
 
 database:
   driverClass: org.postgresql.Driver
-  user: hlgm
-  password: P1xV4b3s+0
-  url: jdbc:postgresql://localhost:5432/hlgm
+  user: sgtbbzhz
+  password: fyiYCBt5SSsdvgJO7WwP66oRepEX21Cm
+  url: postgres://sgtbbzhz:fyiYCBt5SSsdvgJO7WwP66oRepEX21Cm@babar.elephantsql.com:5432/sgtbbzhz
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
