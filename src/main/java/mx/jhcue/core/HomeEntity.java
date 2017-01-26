@@ -2,8 +2,6 @@ package mx.jhcue.core;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;

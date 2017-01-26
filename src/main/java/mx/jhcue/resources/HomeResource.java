@@ -77,7 +77,7 @@ public class HomeResource {
         HomeEntity newHome = homeDAO.save(entity);
         LOGGER.debug("Persisted {} from {}", newHome, entity);
 
-        return Response.created(UriBuilder.fromResource(HomeResource.class).build(newHome.getId())).build();
+        return Response.created(UriBuilder.fromPath("/api/home/{id}").build(newHome.getId())).status(HttpStatus.ACCEPTED_202).build();
     }
 
     @PUT
@@ -99,6 +99,6 @@ public class HomeResource {
         entity.setZipCode(home.getZipCode());
         entity.setCountry(home.getCountry());
         HomeEntity newHome = homeDAO.save(entity);
-        return Response.created(UriBuilder.fromResource(HomeResource.class).build(newHome.getId())).status(HttpStatus.ACCEPTED_202).build();
+        return Response.created(UriBuilder.fromPath("/api/home/{id}").build(newHome.getId())).status(HttpStatus.ACCEPTED_202).build();
     }
 }
