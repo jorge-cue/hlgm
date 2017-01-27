@@ -85,11 +85,13 @@ public class HomeResource {
     @Timed
     @UnitOfWork
     public Response put(@PathParam("id") @NotNull Long id, @NotNull @Valid Home home) {
+        LOGGER.debug("put id {}, home {}", id, home);
         if (! id.equals(home.getId())) {
             return Response.created(UriBuilder.fromResource(HomeResource.class).build(id, home.getId())).status(HttpStatus.CONFLICT_409).build();
         }
         HomeEntity entity = homeDAO.findById(id);
         if (entity == null) {
+            LOGGER.debug("Entity with id {} Not found", id);
             return Response.created(UriBuilder.fromResource(HomeResource.class).build(id, home.getId())).status(HttpStatus.NOT_FOUND_404).build();
         }
         entity.setStreetAddressLine1(home.getStreetAddressLine1());
@@ -98,7 +100,9 @@ public class HomeResource {
         entity.setState(home.getState());
         entity.setZipCode(home.getZipCode());
         entity.setCountry(home.getCountry());
+        LOGGER.debug("About to persist {}", entity);
         HomeEntity newHome = homeDAO.save(entity);
+        LOGGER.debug("Persisted {} from {}", newHome, entity);
         return Response.created(UriBuilder.fromPath("/api/home/{id}").build(newHome.getId())).status(HttpStatus.ACCEPTED_202).build();
     }
 }

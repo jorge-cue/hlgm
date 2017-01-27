@@ -5,10 +5,13 @@ logging:
 
 database:
   driverClass: org.postgresql.Driver
-  user: sgtbbzhz
-  password: fyiYCBt5SSsdvgJO7WwP66oRepEX21Cm
-  url: postgres://sgtbbzhz:fyiYCBt5SSsdvgJO7WwP66oRepEX21Cm@babar.elephantsql.com:5432/sgtbbzhz
+  user: endimujt
+  password: Jv4bpbaxY1MFfU8wCqaxMUeaN67jIzlc
+  url: jdbc:postgresql://babar.elephantsql.com:5432/endimujt
   properties:
     charSet: UTF-8
     hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-  maxWaitForConnection: 1s
+    hibernate.hbm2ddl.auto: update
+  initialSize: 1
+  minSize: 1
+  maxSize: 5
