@@ -20,13 +20,12 @@ public class HomeLocationsOnGoogleMapsApplication extends Application<HomeLocati
         return "HomeLocationsOnGoogleMaps";
     }
 
-    private final HibernateBundle<HomeLocationsOnGoogleMapsConfiguration> hibernate =
-        new HibernateBundle<HomeLocationsOnGoogleMapsConfiguration>(HomeEntity.class) {
-            @Override
-            public PooledDataSourceFactory getDataSourceFactory(HomeLocationsOnGoogleMapsConfiguration configuration) {
-                return configuration.getDataSourceFactory();
-            }
-        };
+    private final HibernateBundle<HomeLocationsOnGoogleMapsConfiguration> hibernate = new HibernateBundle<HomeLocationsOnGoogleMapsConfiguration>(HomeEntity.class) {
+        @Override
+        public PooledDataSourceFactory getDataSourceFactory(HomeLocationsOnGoogleMapsConfiguration configuration) {
+            return configuration.getDataSourceFactory();
+        }
+    };
 
     @Override
     public void initialize(final Bootstrap<HomeLocationsOnGoogleMapsConfiguration> bootstrap) {
