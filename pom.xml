@@ -19,7 +19,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <dropwizard.version>1.0.4</dropwizard.version>
+        <dropwizard.version>1.0.5</dropwizard.version>
         <mainClass>mx.jhcue.HomeLocationsOnGoogleMapsApplication</mainClass>
     </properties>
 
@@ -43,6 +43,14 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-hibernate</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-views-freemarker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-forms</artifactId>
         </dependency>
         <dependency>
             <groupId>io.dropwizard</groupId>

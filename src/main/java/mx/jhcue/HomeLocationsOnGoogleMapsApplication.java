@@ -5,9 +5,11 @@ import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.hibernate.HibernateBundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.dropwizard.views.ViewBundle;
 import mx.jhcue.core.HomeEntity;
 import mx.jhcue.db.HomeDAO;
 import mx.jhcue.resources.HomeResource;
+import mx.jhcue.resources.MainPageResource;
 
 public class HomeLocationsOnGoogleMapsApplication extends Application<HomeLocationsOnGoogleMapsConfiguration> {
 
@@ -31,6 +33,7 @@ public class HomeLocationsOnGoogleMapsApplication extends Application<HomeLocati
     @Override
     public void initialize(final Bootstrap<HomeLocationsOnGoogleMapsConfiguration> bootstrap) {
         bootstrap.addBundle(hibernate);
+        bootstrap.addBundle(new ViewBundle<HomeLocationsOnGoogleMapsConfiguration>());
     }
 
     @Override
@@ -40,5 +43,6 @@ public class HomeLocationsOnGoogleMapsApplication extends Application<HomeLocati
         final HomeDAO homeDAO = new HomeDAO(hibernate.getSessionFactory());
 
         environment.jersey().register(new HomeResource(homeDAO));
+        environment.jersey().register(new MainPageResource(homeDAO));
     }
 }

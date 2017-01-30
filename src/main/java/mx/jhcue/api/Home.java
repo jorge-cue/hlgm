@@ -125,4 +125,39 @@ public class Home {
     public String toString() {
         return ToStringBuilder.reflectionToString(this, ToStringStyle.SHORT_PREFIX_STYLE);
     }
+
+    public Home withId(Long id) {
+        setId(id);
+        return this;
+    }
+
+    public Home withStreetAddress1(String streetAddressLine1) {
+        setStreetAddressLine1(streetAddressLine1);
+        return this;
+    }
+
+    public Home withStreetAddress2(String streetAddressLine2) {
+        setStreetAddressLine2(streetAddressLine2);
+        return this;
+    }
+
+    public Home withCity(String city) {
+        setCity(city);
+        return this;
+    }
+
+    public Home withState(String state) {
+        setState(state);
+        return this;
+    }
+
+    public Home withZipCode(String zipCode) {
+        setZipCode(zipCode);
+        return this;
+    }
+
+    public Home withCountry(String country) {
+        setCountry(country);
+        return this;
+    }
 }

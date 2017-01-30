@@ -38,7 +38,7 @@ public class HomeResource {
     @GET
     @Path("/{id}")
     @Timed
-    @UnitOfWork
+    @UnitOfWork(readOnly = true)
     public Home getHome(@PathParam("id") @NotNull Long id) {
         HomeEntity e = homeDAO.findById(id);
         if (e == null) {
@@ -49,7 +49,7 @@ public class HomeResource {
 
     @GET
     @Timed
-    @UnitOfWork
+    @UnitOfWork(readOnly = true)
     public List<Home> getAll() {
         List<HomeEntity> homes = homeDAO.list();
         List<Home> response = homes
